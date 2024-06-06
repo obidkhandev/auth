@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:untitled/auth/widget/global_primary_button.dart';
 import 'package:untitled/auth/widget/text_field.dart';
+
+import '../cubit/auth_cubit.dart';
 
 class PasswordScreen extends StatefulWidget {
   const PasswordScreen({super.key});
@@ -44,6 +47,7 @@ class _PasswordScreenState extends State<PasswordScreen> {
                   SizedBox(height: 50),
                   GlobalPrimaryButton(
                     onTap: () {
+                      context.read<AuthCubit>().state.copyWith(phoneNumber: passwordController.text);
                       // Navigator.push(context, MaterialPageRoute(builder: (_)=> PasswordScreen()));
                     },
                     text: "Login",

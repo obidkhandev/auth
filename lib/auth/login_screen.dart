@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:untitled/auth/password_screen.dart';
 import 'package:untitled/auth/widget/auth_field.dart';
 import 'package:untitled/auth/widget/global_primary_button.dart';
+import 'package:untitled/cubit/auth_cubit.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -42,6 +44,7 @@ class _LoginScreenState extends State<LoginScreen> {
               SizedBox(height: 50),
               GlobalPrimaryButton(
                 onTap: () {
+                  context.read<AuthCubit>().state.copyWith(phoneNumber: phoneNumberController.text);
                   Navigator.push(
                     context,
                     MaterialPageRoute(
